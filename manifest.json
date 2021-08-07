@@ -1,0 +1,19 @@
+{
+  "name": "Coursera Mini Video Player Resizer",
+  "version": "1.0",
+  "description": "This makes Coursera mini video players resizable!",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "permissions": ["https://www.coursera.org/learn/*/lecture/*/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.coursera.org/learn/*/lecture/*/*"],
+      "js": ["content_scripts.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "manifest_version": 2
+}
