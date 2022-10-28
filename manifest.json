@@ -1,6 +1,6 @@
 {
   "name": "Coursera Mini Video Player Resizer",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "This makes Coursera mini video players resizable!",
   "icons": {
     "16": "icon16.png",
@@ -15,5 +15,5 @@
       "run_at": "document_end"
     }
   ],
-  "manifest_version": 3
+  "manifest_version": 4
 }

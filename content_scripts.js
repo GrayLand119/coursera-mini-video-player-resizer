@@ -1,8 +1,8 @@
-const getVideoPlayer = () => document.querySelector('#main > div > div.rc-VideoMiniPlayer');
+const getVideoPlayer = () => document.querySelector('div.rc-VideoMiniPlayer');
 
-const getVideoPlayerContainer = () => document.querySelector('#main > div > div.rc-VideoMiniPlayer > div.video-main-player-container');
+const getVideoPlayerContainer = () => document.querySelector('div.video-main-player-container');
 
-const getVideoControls = () => document.querySelector('#main > div > div.rc-VideoMiniPlayer.mini > div.rc-VideoMiniControls');
+const getVideoControls = () => document.querySelector('div.rc-VideoControlsContainer');
 
 const createVideoResizer = () => {
     const videoResizer = document.createElement('div');
@@ -12,18 +12,26 @@ const createVideoResizer = () => {
     videoResizer.style.border = 'solid';
     videoResizer.style.borderColor = '#E0E0E0';
     videoResizer.style.cursor = 'nw-resize';
+    videoResizer.style.position = 'absolute';
+    videoResizer.style.top = '0px';
+    videoResizer.style.left = '0px';
 
     return videoResizer;
 };
 
 const main = () => {
     const videoRatio = getVideoPlayer().clientWidth / getVideoPlayer().clientHeight;
-
+    getVideoPlayerContainer().style.width = 750 + 'px';
+    
     let miniVideoWidth = null;
 
     const videoResizer = createVideoResizer();
-    if (getVideoControls() != null) {
-        getVideoControls().appendChild(videoResizer);
+    // if (getVideoControls() != null) {
+    //     getVideoControls().appendChild(videoResizer);
+    // }
+
+    if (getVideoPlayerContainer() != null) {
+        getVideoPlayerContainer().appendChild(videoResizer);
     }
 
     const videoPlayerObserver = new MutationObserver(() => {
@@ -37,8 +45,6 @@ const main = () => {
             const miniVideoHeight = (miniVideoWidth / videoRatio);
             getVideoPlayerContainer().style.width = miniVideoWidth + 'px';
             getVideoPlayerContainer().style.height = miniVideoHeight + 'px';
-            getVideoControls().style.width = miniVideoWidth + 'px';
-            getVideoControls().style.height = miniVideoHeight + 'px';
         } else {
             getVideoPlayerContainer().style.width = '';
             getVideoPlayerContainer().style.height = '';
@@ -55,8 +61,6 @@ const main = () => {
         const miniVideoHeight = (miniVideoWidth / videoRatio);
         getVideoPlayerContainer().style.width = miniVideoWidth + 'px';
         getVideoPlayerContainer().style.height = miniVideoHeight + 'px';
-        getVideoControls().style.width = miniVideoWidth + 'px';
-        getVideoControls().style.height = miniVideoHeight + 'px';
     };
 
     const stopDragVideoResizer = (_) => {
@@ -76,7 +80,13 @@ const main = () => {
 };
 
 let jsInitChecktimer;
+let count = 0;
 const jsLoaded = () => {
+    count += 1;
+    if (count > 120) {
+        clearInterval(jsInitChecktimer);
+        return;
+    }
     if (getVideoControls() != null) {
         clearInterval(jsInitChecktimer);
         main();

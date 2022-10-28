@@ -1,6 +1,10 @@
-# Coursera Mini Video Player Resizer
+# Coursera Mini Video Player Resizer - GrayLand
 
 This makes Coursera mini video players resizable!
+
+## 1.0.1 Changed
+
+- Bug fixed
 
 ## Usage
 1. Open any Coursera course.
