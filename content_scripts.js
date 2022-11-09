@@ -1,7 +1,5 @@
 const getVideoPlayer = () => document.querySelector('div.rc-VideoMiniPlayer');
-
 const getVideoPlayerContainer = () => document.querySelector('div.video-main-player-container');
-
 const getVideoControls = () => document.querySelector('div.rc-VideoControlsContainer');
 
 const createVideoResizer = () => {
@@ -45,6 +43,8 @@ const main = () => {
             const miniVideoHeight = (miniVideoWidth / videoRatio);
             getVideoPlayerContainer().style.width = miniVideoWidth + 'px';
             getVideoPlayerContainer().style.height = miniVideoHeight + 'px';
+            // getVideoControls().style.width = miniVideoWidth + 'px';
+            // getVideoControls().style.height = miniVideoHeight + 'px';
         } else {
             getVideoPlayerContainer().style.width = '';
             getVideoPlayerContainer().style.height = '';
@@ -61,6 +61,8 @@ const main = () => {
         const miniVideoHeight = (miniVideoWidth / videoRatio);
         getVideoPlayerContainer().style.width = miniVideoWidth + 'px';
         getVideoPlayerContainer().style.height = miniVideoHeight + 'px';
+        // getVideoControls().style.width = miniVideoWidth + 'px';
+        // getVideoControls().style.height = miniVideoHeight + 'px';
     };
 
     const stopDragVideoResizer = (_) => {
@@ -93,6 +95,50 @@ const jsLoaded = () => {
     }
 };
 
-window.addEventListener('load', () => {
-    jsInitChecktimer = setInterval(jsLoaded, 500);
+// if (getVideoControls() != null) {
+//     main();
+// }
+
+var button = document.createElement("Button");
+button.innerHTML = "ResizePlayer";
+button.style = "top: 0px; right: 0px; position:absolute;z-index: 9999; height: 44px";
+button.addEventListener('click', () => {
+  // When there is a "click"
+  // it shows an alert in the browser
+  // alert('Oh, you clicked me!')
+  main();
 });
+
+document.body.appendChild(button);
+
+// // Create a button element
+// const button = document.createElement('input');
+// button.id = 'mainButton';
+// button.type = "button";
+
+// // Set the button text to 'Can you click me?'
+// button.value = 'Load JS';
+// // Attach the "click" event to your button
+
+// // Add the button to your HTML <body> tag
+// document.body.appendChild(button);
+
+
+// alert('Oh, you clicked me!')
+
+// chrome.runtime.onInstalled.addListener(() => {
+//   chrome.contextMenus.create({
+//     "id": "sampleContextMenu",
+//     "title": "Sample Context Menu",
+//     "contexts": ["selection"]
+//   });
+// });
+
+// chrome.commands.onCommand.addListener((command) => {
+//   console.log(`Command: ${command}`);
+// });
+
+// window.addEventListener('load', () => {
+//     jsInitChecktimer = setInterval(jsLoaded, 1000);
+//     // document.getElementsByClassName("video-main-player-container")[0].style = "width: 750px"
+// });

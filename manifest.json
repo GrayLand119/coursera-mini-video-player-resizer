@@ -1,19 +1,19 @@
 {
-  "name": "Coursera Mini Video Player Resizer",
-  "version": "1.0.1",
+  "name": "Coursera Mini Video Player Resizer - lgl",
+  "version": "1.0",
   "description": "This makes Coursera mini video players resizable!",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "host_permissions": ["https://www.coursera.org/learn/*/lecture/*/*"],
+  "host_permissions": ["https://www.coursera.org/learn/*/lecture/*/*", "https://www.baidu.com/*"],
   "content_scripts": [
     {
-      "matches": ["https://www.coursera.org/learn/*/lecture/*/*"],
+      "matches": ["https://www.coursera.org/learn/*/lecture/*/*", "https://www.baidu.com/*"],
       "js": ["content_scripts.js"],
       "run_at": "document_end"
     }
   ],
-  "manifest_version": 4
+  "manifest_version": 3
 }
